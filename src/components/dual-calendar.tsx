@@ -2,10 +2,10 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import {
 	Box,
 	Button,
-	Container,
 	Flex,
 	Grid,
 	Heading,
+	Section,
 	SegmentedControl,
 	Text,
 } from "@radix-ui/themes";
@@ -159,9 +159,11 @@ const DualCalendar: React.FC = () => {
 
 	const renderDays = () => {
 		const days = isJalaliPrimary ? JALALI_DAYS : GREGORIAN_DAYS;
+		const orderedDays = isJalaliPrimary ? [...days.slice(1), days[0]] : days;
+
 		return (
 			<Grid columns="7" mb="2">
-				{days.map((day) => (
+				{orderedDays.map((day) => (
 					<Flex key={day} direction="column" align="center">
 						<Text size="1" weight="bold">
 							{day}
@@ -291,12 +293,18 @@ const DualCalendar: React.FC = () => {
 	};
 
 	return (
-		<Flex direction="column" justify="center" height="100vh" p="4">
-			<Container size="4">
+		<Flex
+			direction="column"
+			justify="center"
+			align="center"
+			height="100vh"
+			width="100vw"
+		>
+			<Section size="4" width="100%">
 				{renderHeader()}
 				{renderDays()}
 				{renderCells()}
-			</Container>
+			</Section>
 		</Flex>
 	);
 };
