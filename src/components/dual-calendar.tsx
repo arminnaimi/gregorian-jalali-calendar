@@ -291,11 +291,13 @@ const DualCalendar: React.FC = () => {
 	};
 
 	return (
-		<Container my="4" size="4">
-			{renderHeader()}
-			{renderDays()}
-			{renderCells()}
-		</Container>
+		<Flex direction="column" justify="center" height="100vh" p="4">
+			<Container size="4">
+				{renderHeader()}
+				{renderDays()}
+				{renderCells()}
+			</Container>
+		</Flex>
 	);
 };
 
